@@ -1,0 +1,694 @@
+
+sparser.h,572
+#define _sparser_h_sparser_h6,210
+#define BUILD_DATE BUILD_DATE18,646
+struct t_configurationt_configuration20,766
+   struct t_config            config;config22,791
+   struct t_parser_metadata   pmd;pmd23,829
+   struct t_base              *messages;messages24,864
+   struct t_base              *filters_db;filters_db25,905
+   struct t_message_raw       *msg;msg27,949
+   char                       *start_dir;start_dir28,985
+   bool                       network_ready;network_ready29,1027
+   bool                       exec_status;exec_status30,1072
+
+msgparser.h,1720
+#define _msgparser_h_msgparser_h6,203
+struct t_message_flit_message_fli18,623
+   struct t_message_field_md  *field_md;field_md20,646
+   struct t_common_list       *responses;responses21,687
+   unsigned int               real_size;real_size23,730
+   uint8                      *field_data;field_data24,771
+struct t_responset_response27,898
+   char  *descr;descr29,918
+   int   error_level;error_level30,935
+struct t_messaget_message33,1041
+   struct t_message_metadata     *mmd;mmd35,1060
+   struct t_message_raw          *raw_message;raw_message36,1099
+   struct t_io_point             *out_point;out_point40,1217
+   struct t_common_list          *fields;fields41,1262
+   t_msg_out_fmt                 out_fmt;out_fmt43,1305
+   bool                          out_only_headers;out_only_headers44,1347
+   int                           error_level;error_level47,1426
+   uint8                         *pointer;pointer48,1472
+   char                          *remainder_descr;remainder_descr49,1515
+   uint16                        remainder_len;remainder_len50,1566
+   uint16                        crc_real;crc_real51,1614
+struct t_parser_metadatat_parser_metadata54,1741
+   struct t_common_list       *md_cache;md_cache56,1768
+   struct t_header_metadata   *header_fields_md;header_fields_md57,1809
+   struct t_filters_base      *filters;filters58,1858
+   struct t_common_list       *stations;stations59,1898
+   struct t_io_point          *in_point;in_point60,1939
+   t_msg_out_fmt              def_out_fmt;def_out_fmt61,1980
+struct t_full_msgdatat_full_msgdata64,2107
+   struct t_message           *msg;msg66,2131
+   struct t_parser_metadata   *pmd;pmd67,2167
+
+msgloader.h,40
+#define _msgloader_h_msgloader_h6,221
+
+raw_message.h,835
+#define _raw_message_h_raw_message_h6,226
+typedef uint16 t_message_type;t_message_type18,694
+struct t_message_headert_message_header20,741
+   uint16            length;length22,767
+   t_message_type    type;type23,796
+   uint16            reciever;reciever24,823
+   uint16            sender;sender25,854
+   time32            time;time26,883
+   uint8             id;id27,910
+   uint8             reserved;reserved28,935
+struct t_message_rawt_message_raw31,1050
+   struct t_message_header header;header33,1073
+   uint8                   *data;data34,1108
+#define MESSAGE_CODE(MESSAGE_CODE41,1387
+#define MESSAGE_VERSION(MESSAGE_VERSION42,1441
+#define message_header_size message_header_size44,1575
+#define message_crc_size message_crc_size45,1637
+#define message_struct_size message_struct_size46,1682
+
+ini.h,148
+#define __INI_H____INI_H__18,466
+#define INI_ALLOW_MULTILINE INI_ALLOW_MULTILINE20,489
+#define INI_ALLOW_MULTILINE INI_ALLOW_MULTILINE57,2106
+
+msgviewer.h,200
+#define _msgviewer_h_msgviewer_h6,209
+#define MAX_PRN_LEN MAX_PRN_LEN16,631
+#define DUMP_WLIMIT DUMP_WLIMIT17,654
+typedef bool (*f_shm_routine)(struct t_full_msgdata *fmd);f_shm_routine19,758
+
+iniparser.h,692
+#define _iniparser_h_iniparser_h6,255
+struct t_key_value_pairt_key_value_pair17,613
+   char *key;key19,639
+   char *value;value20,653
+struct t_key_value_blockt_key_value_block23,753
+   char                          *block_name;block_name25,780
+   struct t_base                 *db;db26,826
+   struct t_common_list          *pairs;pairs27,864
+struct t_baset_base30,989
+   int                           items_cnt;items_cnt32,1005
+   struct t_common_list          *blocks;blocks33,1049
+typedef bool (*f_block_interpreter)(struct t_key_value_block *kvb,f_block_interpreter37,1210
+typedef bool (*f_pair_interpreter)(struct t_key_value_pair *kvp,f_pair_interpreter41,1447
+
+lexan.c,5317
+   lxt_unknown, lxt_eol,lxt_unknown11,360
+   lxt_unknown, lxt_eol,lxt_eol11,360
+   lxt_bracket, lxt_op, lxt_name, lxt_function, lxt_number, lxt_commalxt_bracket12,385
+   lxt_bracket, lxt_op, lxt_name, lxt_function, lxt_number, lxt_commalxt_op12,385
+   lxt_bracket, lxt_op, lxt_name, lxt_function, lxt_number, lxt_commalxt_name12,385
+   lxt_bracket, lxt_op, lxt_name, lxt_function, lxt_number, lxt_commalxt_function12,385
+   lxt_bracket, lxt_op, lxt_name, lxt_function, lxt_number, lxt_commalxt_number12,385
+   lxt_bracket, lxt_op, lxt_name, lxt_function, lxt_number, lxt_commalxt_comma12,385
+} t_lexeme_type;t_lexeme_type13,455
+   op_unknown,op_unknown17,568
+   op_mul,     op_div,     op_mod,op_mul19,600
+   op_mul,     op_div,     op_mod,op_div19,600
+   op_mul,     op_div,     op_mod,op_mod19,600
+   op_plus,    op_minus,op_plus20,635
+   op_plus,    op_minus,op_minus20,635
+   op_lshift,  op_rshift,op_lshift21,660
+   op_lshift,  op_rshift,op_rshift21,660
+   op_lt,      op_gt,      op_ge,   op_le,op_lt22,686
+   op_lt,      op_gt,      op_ge,   op_le,op_gt22,686
+   op_lt,      op_gt,      op_ge,   op_le,op_ge22,686
+   op_lt,      op_gt,      op_ge,   op_le,op_le22,686
+   op_eq,      op_ne,op_eq23,729
+   op_eq,      op_ne,op_ne23,729
+   op_bw_and,op_bw_and24,751
+   op_bw_xor,op_bw_xor25,765
+   op_bw_or,op_bw_or26,779
+   op_log_and,op_log_and27,792
+   op_log_or,op_log_or29,824
+   op_un_bw_not, op_un_log_not, op_size, op_offset, op_existsop_un_bw_not30,838
+   op_un_bw_not, op_un_log_not, op_size, op_offset, op_existsop_un_log_not30,838
+   op_un_bw_not, op_un_log_not, op_size, op_offset, op_existsop_size30,838
+   op_un_bw_not, op_un_log_not, op_size, op_offset, op_existsop_offset30,838
+   op_un_bw_not, op_un_log_not, op_size, op_offset, op_existsop_exists30,838
+} t_operation;t_operation31,900
+typedef enum { bt_left, bt_right } t_bracket_type;bt_left33,996
+typedef enum { bt_left, bt_right } t_bracket_type;bt_right33,996
+typedef enum { bt_left, bt_right } t_bracket_type;t_bracket_type33,996
+typedef enum { nmt_unknown, nmt_field, nmt_metafield, nmt_op, nmt_function }nmt_unknown35,1128
+typedef enum { nmt_unknown, nmt_field, nmt_metafield, nmt_op, nmt_function }nmt_field35,1128
+typedef enum { nmt_unknown, nmt_field, nmt_metafield, nmt_op, nmt_function }nmt_metafield35,1128
+typedef enum { nmt_unknown, nmt_field, nmt_metafield, nmt_op, nmt_function }nmt_op35,1128
+typedef enum { nmt_unknown, nmt_field, nmt_metafield, nmt_op, nmt_function }nmt_function35,1128
+   t_name_type;t_name_type36,1205
+const t_operation op_so    = op_size;op_so38,1302
+const t_operation op_ofs   = op_offset;op_ofs39,1340
+const t_operation op_exs   = op_exists;op_exs40,1380
+#define MAX_PRIO MAX_PRIO42,1501
+struct op_actionop_action44,1601
+   int            prio;prio46,1620
+static operations[] =operations50,1696
+#define MIN_PRIO MIN_PRIO73,2526
+struct t_namet_name76,2704
+   char           *value;value79,2736
+   t_name_type    nt;nt80,2762
+   void           *ndata;ndata81,2784
+   unsigned int   val_len;val_len82,2810
+static name_table_fixed[] =name_table_fixed85,2860
+*name_table_dynamic;name_table_dynamic100,3423
+struct t_lexemet_lexeme102,3525
+   t_lexeme_type type;type104,3543
+      long int          num;num107,3580
+      struct t_name     name;name108,3609
+      t_operation       op;op109,3639
+      t_bracket_type    brk_type;brk_type110,3667
+   } data;data111,3701
+struct t_name *lookup_name_in_table(const struct t_name *name,lookup_name_in_table115,3803
+static __inline bool is_opsymbol(const char c)is_opsymbol136,4539
+static char *la_get_op(char *expr, struct t_lexeme *op)la_get_op159,4957
+static char *la_get_number(char *expr, struct t_lexeme *num)la_get_number281,7769
+static char *la_get_name(char *expr, struct t_lexeme *name)la_get_name339,9165
+static char *la_get_bracket(char *expr, struct t_lexeme *bt)la_get_bracket398,10952
+static __inline char *la_get_comma(char *expr, struct t_lexeme *comma)la_get_comma425,11597
+static __inline char *la_get_eol(char *expr, struct t_lexeme *eol)la_get_eol441,11949
+static char *la_get_token(char *expr, struct t_lexeme *lexeme)la_get_token455,12261
+long int make_operation(const long int arg0, const long int arg1,make_operation515,14118
+long int calc_op_value(char                           **expr,calc_op_value594,15877
+long int sa_term(char                           **expr,sa_term627,17010
+long int sa_get_field_value(const struct t_name             *name,sa_get_field_value687,18882
+long int sa_ph_un_op(char                    **expr,sa_ph_un_op747,20573
+long int sa_run_function(char                            **expr,sa_run_function839,22819
+long int sa_ph_expression(char                           **expr,sa_ph_expression923,24973
+char *lxn_decode_err(const t_lex_ecode e_code)lxn_decode_err1022,27948
+__inline void lxn_print_error(const char *st_expr, const char *cur_expr,lxn_print_error1087,29744
+__inline bool lxn_print_if_err(const struct t_la_control_block *param)lxn_print_if_err1097,30150
+struct t_la_control_block *lxn_init_param(char                       *expr,lxn_init_param1109,30558
+long int lxn_analyse(struct t_la_control_block *param)lxn_analyse1120,30973
+
+config_loader.c,404
+bool set_file(char **result_path, char *conf_dir, char *value, char *key_name)set_file13,416
+bool config_iterator(struct t_key_value_pair *kvp, void *cnf)config_iterator40,1299
+bool configdb_iterator(struct t_key_value_block *kvb, void *cnf)configdb_iterator95,2938
+bool load_config(struct t_config *config,load_config101,3210
+bool destroy_config(struct t_config *config)destroy_config149,4578
+
+lexan_funcs.h,249
+#define _lexan_funcs_h_lexan_funcs_h6,228
+struct t_func_argt_func_arg15,572
+   long int          value;value17,592
+   struct t_func_arg *next;next18,620
+typedef long int (*f_func)(struct t_func_arg *args, t_lex_ecode *e_code);f_func21,732
+
+crc.h,66
+#define _crc_h_crc_h6,208
+#define DEF_VECTOR DEF_VECTOR15,555
+
+utils.c,4462
+static long int malloc_count = 0;malloc_count10,358
+int strlen_utf8(const char *s)strlen_utf813,480
+char* strncpy0(char* dest, const char* src, size_t size)strncpy028,738
+__inline char* skip_spaces(char *s)skip_spaces38,998
+__inline char* rstrip(char* s)rstrip44,1182
+__inline bool iseol(const char c)iseol56,1425
+__inline bool iscomma(const char c)iscomma61,1583
+__inline bool is_metafield_fs(const char c)is_metafield_fs66,1725
+__inline bool is_control_fs(const char c)is_control_fs71,1875
+__inline bool is_first_namesym(const char c)is_first_namesym76,2023
+__inline bool is_namesym(const char c)is_namesym81,2190
+__inline bool isoctal(const char c)isoctal86,2351
+__inline bool is_left_bracket(const char c)is_left_bracket91,2509
+__inline bool is_right_bracket(const char c)is_right_bracket96,2659
+__inline bool isbracket(const char c)isbracket101,2810
+float get_num(const char *str)get_num106,2987
+__inline void print_hexdump(const unsigned char *data, const long data_sz,print_hexdump126,3535
+void fprint_hexdump(FILE *fs, const unsigned char *data, const long data_sz,fprint_hexdump132,3783
+void fprint_rhexdump(FILE *fs, const unsigned char *data, const long data_sz,fprint_rhexdump150,4270
+__inline void fprint_bin_octet(FILE* fs,fprint_bin_octet169,4770
+void fprint_bin_internal(FILE* fs, const unsigned char *data,fprint_bin_internal188,5214
+__inline void print_bin(const unsigned char *data, const unsigned int data_sz,print_bin247,6668
+__inline void fprint_rbin(FILE* fs, const unsigned char *data,fprint_rbin253,6912
+__inline void fprint_bin(FILE* fs, const unsigned char *data,fprint_bin259,7172
+__inline void  fprint_sym(FILE* fs, const char c, const unsigned int count)fprint_sym265,7431
+__inline void  print_sym(const char c, const unsigned int count)print_sym274,7721
+void fprint_by_spec(FILE *fs, uint8 *data_ptr, const unsigned data_sz,fprint_by_spec279,7904
+char *sprintf_by_spec(uint8 *data_ptr, const unsigned data_sz,sprintf_by_spec347,10066
+__inline char *_(const char *msgid)_429,12771
+struct t_common_li *cl_expand(struct t_common_list *list)cl_expand444,13209
+static struct t_common_li *cl_destroy_fields(struct t_common_list *list)cl_destroy_fields484,14258
+struct t_common_list *cl_create(const unsigned int items_in_block,cl_create514,14924
+__inline t_cl_error cl_testerr(struct t_common_list *list)cl_testerr540,15593
+bool cl_destroy(struct t_common_list *list)cl_destroy548,15858
+__inline t_cl_error cl_insert(struct t_common_list *list,cl_insert569,16364
+__inline void *cl_remove(struct t_common_list *list, t_cl_error *err)cl_remove588,16897
+__inline t_cl_error cl_push(struct t_common_list *list, void *data_ptr)cl_push617,17691
+__inline struct t_common_li *cl_pick_li(const struct t_common_list *list,cl_pick_li643,18342
+__inline void *cl_pick(const struct t_common_list *list, t_cl_error *err)cl_pick657,18801
+__inline void *cl_pick_top(const struct t_common_list *list, t_cl_error *err)cl_pick_top664,19069
+__inline void *cl_pop(struct t_common_list *list, t_cl_error *err)cl_pop687,19638
+__inline t_cl_error cl_chg_top(struct t_common_list *list, void *data_ptr)cl_chg_top716,20457
+__inline bool cl_is_empty(const struct t_common_list *list)cl_is_empty727,20759
+void* cl_iterate_internal(struct t_common_list  *list,cl_iterate_internal733,20965
+__inline void* cl_iterate(struct t_common_list  *list,cl_iterate780,22159
+__inline void* cl_riterate(struct t_common_list *list,cl_riterate788,22529
+__inline void *cl_cur_to_first(struct t_common_list *list, t_cl_error *err)cl_cur_to_first796,22900
+__inline void *cl_cur_to_last(struct t_common_list *list, t_cl_error *err)cl_cur_to_last810,23346
+__inline void *cl_pick_next(struct t_common_list *list, t_cl_error *err)cl_pick_next837,24075
+__inline bool cl_have_next(struct t_common_list *list)cl_have_next841,24233
+__inline bool cl_have_prev(struct t_common_list *list)cl_have_prev847,24466
+__inline void *cl_next(struct t_common_list *list, t_cl_error *err)cl_next853,24672
+__inline void *cl_new_item(struct t_common_list *cl, const size_t item_sz)cl_new_item877,25286
+__inline void *cl_find(struct t_common_list  *cl,cl_find894,25657
+__inline void *cl_rfind(struct t_common_list  *cl,cl_rfind904,26036
+__inline int cl_items_count(struct t_common_list *cl)cl_items_count914,26417
+void *dmalloc(size_t size)dmalloc922,26718
+void dfree(void *ptr)dfree938,27130
+
+stations.c,687
+struct t_station *add_station(struct t_common_list *sdb)add_station9,330
+bool station_iterator(struct t_key_value_pair *kvp, void *station_ptr)station_iterator16,558
+bool stationdb_iterator(struct t_key_value_block *kvb, void *stations)stationdb_iterator53,1661
+static void station_destructor(void *station)station_destructor73,2200
+struct t_common_list *init_stations_db(const char *filename)init_stations_db79,2396
+bool destroy_stations_db(struct t_common_list *stations)destroy_stations_db103,2967
+static bool st_ns_handler(void *st, void *addr_ptr)st_ns_handler111,3200
+char *get_station_name_by_addr(struct t_common_list   *stations,get_station_name_by_addr135,3869
+
+msgmetadata.c,1563
+static int nc = 0;nc13,422
+struct t_message_tree_node *create_node(const t_node_type node_type)create_node17,536
+bool free_node(struct t_message_tree_node *node)free_node77,2022
+struct t_message_tree_node *add_node(struct t_message_field_tree  *msg_tree,add_node106,2704
+static void link_destructor(void *link)link_destructor201,5906
+static bool free_fields_tree(struct t_message_metadata *mmd)free_fields_tree206,6080
+bool destroy_messages_db(struct t_base          *messages,destroy_messages_db249,7110
+static bool msg_iterator(struct t_key_value_pair *kvp, void *user_data)msg_iterator270,7667
+static bool msgdb_iterator(struct t_key_value_block *kvb, void *msg_db)msgdb_iterator426,12418
+static bool mfs_iterator(struct t_key_value_pair *kvp, void *mfs_db)mfs_iterator458,13299
+static bool mfsdb_iterator(struct t_key_value_block *kvb, void *mfs_db)mfsdb_iterator506,14662
+void header_field_destructor(void *hf)header_field_destructor531,15386
+struct t_header_metadata *init_header_fields_db(const char *filename)init_header_fields_db538,15619
+bool destroy_header_fields_db(struct t_header_metadata *hmd)destroy_header_fields_db571,16478
+struct t_base *init_messages_db(const char            *filename,init_messages_db582,16744
+struct t_message_metadata *get_message_md_by_type(const t_message_type type,get_message_md_by_type605,17381
+__inline struct t_message_metadata *get_message_metadata(struct t_message_raw *msg,get_message_metadata620,17926
+bool print_msg_tree(const t_message_type msg_type,print_msg_tree627,18271
+
+actions.c,719
+struct t_sized_datat_sized_data8,309
+   char     *data_ptr;data_ptr10,331
+   char     out_spec;out_spec11,354
+   size_t   size;size12,376
+static bool gf_iterator(void *hf, void *nm)gf_iterator15,478
+bool get_field(struct t_sized_data        *dest,get_field25,755
+bool replace_field_content(char                       **act_par,replace_field_content89,2509
+char* make_act_str(struct t_full_msgdata  *fmd,make_act_str164,4436
+bool aci_system(struct t_full_msgdata     *fmd,aci_system226,5814
+bool show_message(struct t_message *msg, const char *msg_str)show_message248,6303
+bool aci_message(struct t_full_msgdata    *fmd,aci_message260,6681
+f_action_routine actions_table[] =actions_table280,7116
+
+lexan.h,1635
+#define _lexan_h_lexan_h18,511
+typedef enum { lxec_noerror, lxec_ue_eol, lxec_general, lxec_unknown_lexeme,lxec_noerror27,853
+typedef enum { lxec_noerror, lxec_ue_eol, lxec_general, lxec_unknown_lexeme,lxec_ue_eol27,853
+typedef enum { lxec_noerror, lxec_ue_eol, lxec_general, lxec_unknown_lexeme,lxec_general27,853
+typedef enum { lxec_noerror, lxec_ue_eol, lxec_general, lxec_unknown_lexeme,lxec_unknown_lexeme27,853
+   lxec_unknown_op,lxec_unknown_op28,930
+   lxec_ue_ph, lxec_no_oph, lxec_no_cph,lxec_ue_ph29,950
+   lxec_ue_ph, lxec_no_oph, lxec_no_cph,lxec_no_oph29,950
+   lxec_ue_ph, lxec_no_oph, lxec_no_cph,lxec_no_cph29,950
+   lxec_not_field, lxec_field_not_found,lxec_not_field30,991
+   lxec_not_field, lxec_field_not_found,lxec_field_not_found30,991
+   lxec_func_nodef, lxec_func_ie,lxec_func_nodef31,1032
+   lxec_func_nodef, lxec_func_ie,lxec_func_ie31,1032
+   lxec_farg_ae, lxec_farg_ufw, lxec_farg_ofw, lxec_farg_nocomma,lxec_farg_ae32,1066
+   lxec_farg_ae, lxec_farg_ufw, lxec_farg_ofw, lxec_farg_nocomma,lxec_farg_ufw32,1066
+   lxec_farg_ae, lxec_farg_ufw, lxec_farg_ofw, lxec_farg_nocomma,lxec_farg_ofw32,1066
+   lxec_farg_ae, lxec_farg_ufw, lxec_farg_ofw, lxec_farg_nocomma,lxec_farg_nocomma32,1066
+   lxec_trailing_chars,lxec_trailing_chars33,1132
+   lxec_endlxec_end34,1156
+} t_lex_ecode;t_lex_ecode35,1168
+struct t_la_control_blockt_la_control_block38,1307
+   char                       *pos_start;pos_start40,1335
+   char                       *pos_end;pos_end41,1377
+   struct t_full_msgdata      *fmd;fmd42,1417
+   t_lex_ecode                e_code;e_code43,1453
+
+conf.h,687
+#define _conf_h_conf_h6,219
+   #define DEF_CHARSET DEF_CHARSET11,431
+   #define DEF_CHARSET DEF_CHARSET13,468
+#define DEF_TZ DEF_TZ15,506
+#define DEF_IN DEF_IN17,618
+#define DEF_OUT DEF_OUT18,656
+#define TITLE TITLE20,762
+#define LINE_E LINE_E21,843
+#define LINE_D LINE_D22,935
+#define CONF_DIR CONF_DIR24,1108
+   #define PATH_DELIM PATH_DELIM26,1219
+   #define PATH_DELIM PATH_DELIM28,1273
+#define DEFCONF_FILE DEFCONF_FILE30,1306
+#define FILTERS_FILE FILTERS_FILE31,1363
+#define MESSAGES_FILE MESSAGES_FILE32,1421
+#define STATIONS_FILE STATIONS_FILE33,1480
+#define MSGHEADER_FILE MSGHEADER_FILE34,1539
+#define DEF_MSG_OUTTYPE DEF_MSG_OUTTYPE36,1677
+
+network.c,390
+__inline bool init_network()init_network13,404
+__inline bool destr_network()destr_network29,880
+int open_dgram_socket(struct sockaddr_in *sa, const bool for_read)open_dgram_socket37,1069
+   #define _fdopen _fdopen73,1985
+__inline FILE *fopen_dgram_socket(struct sockaddr_in *sa, const char *mode)fopen_dgram_socket76,2099
+__inline int cp_sockclose(int sock)cp_sockclose106,3104
+
+filters.c,2416
+bool destroy_io_point(struct t_io_point *io_point)destroy_io_point12,388
+static void io_point_destructor(void *io_point)io_point_destructor23,669
+static void action_destructor(void *action)action_destructor28,853
+static void filter_destructor(void *filter)filter_destructor33,1025
+static struct t_filter *add_filter(struct t_filters_base *fdb)add_filter43,1354
+struct t_filter_action *add_filter_action(struct t_common_list *actions,add_filter_action58,1733
+struct t_io_point *add_io_point(struct t_common_list *iops,add_io_point69,2105
+bool init_io_point(struct t_io_point *iop, const bool input)init_io_point83,2579
+bool uninit_io_point(struct t_io_point *iop)uninit_io_point135,4144
+bool is_iopoints_eq(struct t_io_point *iop0, struct t_io_point *iop1)is_iopoints_eq172,5169
+bool io_point_in_list(struct t_common_list *io_points, struct t_io_point *iop)io_point_in_list197,5935
+static bool io_point_iterator(void *io_point, void *user_iop)io_point_iterator211,6370
+struct t_io_point *find_io_point(struct t_common_list *iops,find_io_point220,6682
+bool iop_setup_file_params(struct t_io_point *iop, char *param_string,iop_setup_file_params227,6948
+bool iop_setup_net_params(struct t_io_point *iop, char *param_string,iop_setup_net_params272,8201
+struct t_io_point *parse_io_point_params(struct t_filters_base *fdb,parse_io_point_params355,10426
+struct t_filter_action *parse_action_params(char *param_string)parse_action_params481,14495
+__inline t_msg_out_fmt get_out_format(const char *fmt_str)get_out_format569,16697
+bool filter_iterator(struct t_key_value_pair *kvp, void *filters_db)filter_iterator582,17146
+bool filterdb_iterator(struct t_key_value_block *kvb, void *filters_db)filterdb_iterator681,19977
+struct t_base  *load_filters_db(const char            *filename,load_filters_db702,20586
+struct t_io_point *init_def_iop(const struct t_io_point *src_iop)init_def_iop722,21380
+struct t_filters_base *init_filters_db(struct t_base     *filters,init_filters_db735,21804
+bool destroy_filters_db(struct t_base *filters,destroy_filters_db779,23255
+bool get_filters_by_msgtype(struct t_filters_base *fdb,get_filters_by_msgtype796,23734
+void dump_io_point(struct t_io_point *iop)dump_io_point821,24528
+void dump_io_points_list(struct t_common_list *list)dump_io_points_list865,25745
+bool dump_filters_db(struct t_filters_base *fdb)dump_filters_db879,26103
+
+config_loader.h,390
+#define _config_loader_h_config_loader_h6,213
+struct t_configt_config18,681
+   char *config_dir;config_dir20,699
+   char *header_file;header_file21,720
+   char *messages_file;messages_file22,742
+   char *stations_file;stations_file23,766
+   char *filters_file;filters_file24,790
+   char *src;src25,813
+   char *dst;dst26,827
+   t_msg_out_fmt out_format;out_format27,841
+
+sparser.c,355
+struct t_configuration config;config22,741
+void print_version(const char *p_name)print_version24,853
+void usage(const char *p_name)usage30,1065
+void exitf()exitf68,2977
+void s_handler(int s)s_handler84,3490
+bool start_network(struct t_configuration *conf, const char *def_opt)start_network90,3651
+int main(int argc, char **argv)main106,4114
+
+msgparser.c,1866
+static void response_destructor(void *resp)response_destructor18,599
+static void field_destructor(void *field)field_destructor26,815
+struct t_common_list *clear_fields_list(struct t_common_list *mfl)clear_fields_list35,1052
+static __inline bool msg_free_list(struct t_common_list *mfl)msg_free_list52,1514
+__inline struct t_message_fli *add_message_field(struct t_common_list *mfl)add_message_field61,1794
+__inline struct t_response *add_message_resp(struct t_common_list *mrs)add_message_resp69,2046
+__inline struct t_response *add_field_resp(struct t_full_msgdata  *fmd,add_field_resp77,2291
+struct t_message_tree_node *get_next_node(struct t_message_tree_node *node,get_next_node174,4846
+static bool get_parsed_message(struct t_full_msgdata *fmd)get_parsed_message189,5285
+static bool fli_ns_handler(void *fli, void *name)fli_ns_handler570,18758
+struct t_message_fli *get_field_by_name(const char       *name,get_field_by_name580,19066
+bool get_metafield_by_name(struct t_full_msgdata      *fmd,get_metafield_by_name591,19456
+static __inline bool msg_init(struct t_full_msgdata *fmd)msg_init758,24869
+__inline bool msg_out(struct t_full_msgdata *fmd)msg_out772,25329
+__inline bool msg_out_in_all_dests(struct t_full_msgdata    *fmd,msg_out_in_all_dests788,25792
+__inline bool make_single_action(struct t_full_msgdata   *fmd,make_single_action839,27336
+bool make_actions(struct t_full_msgdata   *fmd,make_actions850,27714
+static __inline bool msg_uninit(struct t_message *msg)msg_uninit867,28180
+bool parse_message(struct t_full_msgdata *fmd)parse_message881,28492
+bool mdi_compound(struct t_full_msgdata *fmd)mdi_compound989,31781
+__inline bool parse_raw_message(const struct t_message_raw     *raw_msg,parse_raw_message1035,33314
+bool process_messages(struct t_message_raw      **raw_buffer,process_messages1053,33942
+
+msgloader.c,240
+struct t_message_raw *load_msg_from_file(FILE* fs)load_msg_from_file15,453
+struct t_message_raw *load_msg_from_net(const int sock)load_msg_from_net61,1755
+         #define NL_FLAGS NL_FLAGS71,2018
+   #undef NL_FLAGSNL_FLAGS106,2930
+
+utils.h,2197
+#define _utils_h_utils_h6,201
+struct t_common_lit_common_li17,640
+   void                 *data_ptr;data_ptr19,661
+   bool                 in_use;in_use20,696
+   struct t_common_li   *prev;prev21,728
+   struct t_common_li   *next;next22,759
+typedef void (*f_cl_destructor)(void *data);f_cl_destructor25,874
+struct t_common_listt_common_list27,1000
+   struct t_common_li   *first;first29,1023
+   struct t_common_li   *last;last30,1055
+   struct t_common_li   *cur;cur31,1086
+   unsigned             allocated_items_count;allocated_items_count33,1160
+   unsigned             current_items_count;current_items_count35,1230
+   unsigned             items_in_block;items_in_block36,1275
+   f_cl_destructor      cli_destructor;cli_destructor38,1338
+#define LIST_ITEMS_IN_BLOCK LIST_ITEMS_IN_BLOCK46,1594
+      #define _P(_P50,1776
+      #define _P(_P52,1853
+typedef enum { clec_noerr, clec_nolist, clec_nomem, clec_empty, clec_last_item,clec_noerr60,2115
+typedef enum { clec_noerr, clec_nolist, clec_nomem, clec_empty, clec_last_item,clec_nolist60,2115
+typedef enum { clec_noerr, clec_nolist, clec_nomem, clec_empty, clec_last_item,clec_nomem60,2115
+typedef enum { clec_noerr, clec_nolist, clec_nomem, clec_empty, clec_last_item,clec_empty60,2115
+typedef enum { clec_noerr, clec_nolist, clec_nomem, clec_empty, clec_last_item,clec_last_item60,2115
+               clec_noiterf, clec_iterf, clec_cycle } t_cl_error;clec_noiterf61,2195
+               clec_noiterf, clec_iterf, clec_cycle } t_cl_error;clec_iterf61,2195
+               clec_noiterf, clec_iterf, clec_cycle } t_cl_error;clec_cycle61,2195
+               clec_noiterf, clec_iterf, clec_cycle } t_cl_error;t_cl_error61,2195
+typedef bool (*f_cl_iterhandler)(void *data, void *user);f_cl_iterhandler63,2342
+#define cl_create_def(cl_create_def68,2695
+#define cl_create_defd(cl_create_defd69,2756
+   #define min(min165,7962
+   #define max(max168,8050
+   #define memzero(memzero173,8256
+#define streq(streq176,8397
+#define streqn(streqn177,8442
+#define strceq(strceq181,8621
+#define strceqn(strceqn182,8670
+   #define dmalloc dmalloc188,8888
+   #define dfree dfree189,8914
+
+raw_message.c,167
+__inline int message_data_len(const struct t_message_raw *msg)message_data_len11,381
+__inline uint16 message_crc(const struct t_message_raw *msg)message_crc17,627
+
+ini.c,326
+#define INI_MAX_LINE INI_MAX_LINE23,607
+#define INI_MAX_SECTION INI_MAX_SECTION24,633
+#define INI_MAX_NAME INI_MAX_NAME25,661
+static char* find_char_or_comment(const char* s, char c)find_char_or_comment31,975
+int ini_parse_file(FILE* file,ini_parse_file46,1362
+int ini_parse(const char* filename,ini_parse137,4284
+
+errors.h,624
+#define _errors_h_errors_h6,184
+   cec_noerror, cec_nomem, cec_file_open,cec_noerror16,541
+   cec_noerror, cec_nomem, cec_file_open,cec_nomem16,541
+   cec_noerror, cec_nomem, cec_file_open,cec_file_open16,541
+   cec_no_field,cec_no_field17,583
+} t_common_ecode;t_common_ecode18,600
+   et_common,et_common21,714
+   et_moduleet_module22,728
+} t_error_type;t_error_type23,741
+typedef void (*f_error_describer)(const uint32 e_code);f_error_describer25,838
+struct t_errort_error27,975
+   t_error_type type;type29,992
+      t_common_ecode common;common32,1028
+      uint32         module;module33,1057
+
+common.h,35
+#define _common_h_common_h10,250
+
+msgviewer.c,635
+bool mdi_prn_idt(void *fli, void *msg_ptr)mdi_prn_idt16,566
+int mdi_prn(struct t_message *msg)mdi_prn90,3005
+bool mdi_prn_ihr(void *hf_ptr, void *vp_ptr)mdi_prn_ihr110,3674
+bool shm_prn(struct t_full_msgdata *fmd)shm_prn181,5793
+bool mdi_csv_idt(void *fli, void *user)mdi_csv_idt242,7415
+bool mdi_csv_ihr(void *hf_ptr, void *vp_ptr)mdi_csv_ihr270,8310
+bool mdi_csv(struct t_message *msg)mdi_csv307,9568
+bool shm_csv(struct t_full_msgdata *fmd)shm_csv322,9963
+int mdi_raw(struct t_message *msg)mdi_raw357,10907
+bool shm_raw(struct t_full_msgdata *fmd)shm_raw364,11156
+f_shm_routine shm_table[] =shm_table406,12415
+
+iniparser.c,1336
+static void block_destructor(void *kvb)block_destructor19,593
+static void pair_destructor(void *kvp)pair_destructor28,870
+static struct t_key_value_pair *db_add_pair(db_add_pair37,1132
+struct t_key_value_block *db_add_kv_block(struct t_base  *db,db_add_kv_block66,1863
+static struct t_base *db_create()db_create98,2628
+bool db_destroy(struct t_base *db)db_destroy114,3030
+struct t_db_abt_db_ab125,3288
+   struct t_base            *db;db127,3305
+   struct t_key_value_block *cur_kvb;cur_kvb128,3338
+int ini_handler(void *user, const char *section, const char *name,ini_handler132,3467
+struct t_base *db_load_base(const char *ini_file)db_load_base152,4031
+__inline char *db_get_value(const struct t_key_value_block  *kv_block,db_get_value171,4639
+static bool gvp_handler(void *kvp, void *key_name)gvp_handler180,4991
+__inline struct t_key_value_pair *db_get_value_pair(db_get_value_pair187,5236
+static bool gbn_handler(void *kvb, void *block_name)gbn_handler196,5605
+__inline struct t_key_value_block *db_get_block_by_name(db_get_block_by_name204,5904
+struct t_key_value_block *db_get_block_by_value(db_get_block_by_value213,6194
+__inline bool db_iterate_block(const struct t_key_value_block *kvb,db_iterate_block252,7391
+__inline bool db_iterate_base(const struct t_base *db,db_iterate_base265,7823
+
+stations.h,231
+#define _stations_h_stations_h6,228
+#define MAX_ST_ADDRS MAX_ST_ADDRS15,573
+struct t_stationt_station17,678
+   uint16   addr[MAX_ST_ADDRS];addr19,697
+   int      addr_count;addr_count20,729
+   char     *name;name21,753
+
+msgmetadata.h,3515
+#define _msgmetadata_h_msgmetadata_h6,235
+typedef enum { mof_unknown = -1, mof_prn, mof_raw, mof_csv } t_msg_out_fmt;mof_unknown19,728
+typedef enum { mof_unknown = -1, mof_prn, mof_raw, mof_csv } t_msg_out_fmt;mof_prn19,728
+typedef enum { mof_unknown = -1, mof_prn, mof_raw, mof_csv } t_msg_out_fmt;mof_raw19,728
+typedef enum { mof_unknown = -1, mof_prn, mof_raw, mof_csv } t_msg_out_fmt;mof_csv19,728
+typedef enum { mof_unknown = -1, mof_prn, mof_raw, mof_csv } t_msg_out_fmt;t_msg_out_fmt19,728
+typedef enum { nt_field, nt_link, nt_metafield } t_node_type;nt_field21,885
+typedef enum { nt_field, nt_link, nt_metafield } t_node_type;nt_link21,885
+typedef enum { nt_field, nt_link, nt_metafield } t_node_type;nt_metafield21,885
+typedef enum { nt_field, nt_link, nt_metafield } t_node_type;t_node_type21,885
+               lt_undef = -1,lt_undef24,1043
+               lt_if = 0, lt_elif, lt_else,lt_if25,1073
+               lt_if = 0, lt_elif, lt_else,lt_elif25,1073
+               lt_if = 0, lt_elif, lt_else,lt_else25,1073
+               lt_repeat, lt_endlt_repeat26,1117
+               lt_repeat, lt_endlt_end26,1117
+             } t_link_type;t_link_type27,1150
+typedef enum { mft_ptr, mft_data } t_mf_type;mft_ptr29,1259
+typedef enum { mft_ptr, mft_data } t_mf_type;mft_data29,1259
+typedef enum { mft_ptr, mft_data } t_mf_type;t_mf_type29,1259
+struct t_message_field_mdt_message_field_md32,1413
+   float                size;size34,1441
+   char                 out_spec;out_spec35,1471
+   bool                 is_repeat;is_repeat37,1550
+   char                 *name;name38,1585
+   char                 *descr;descr39,1616
+struct t_link_datat_link_data44,1841
+   t_link_type                link_type;link_type46,1862
+   char                       *expr;expr48,1960
+   struct t_message_tree_node *child;child49,1997
+struct t_header_fieldt_header_field52,2119
+   char  *name;name54,2143
+   char  *descr;descr55,2159
+   char  out_spec;out_spec56,2176
+struct t_header_metadatat_header_metadata59,2279
+   struct t_common_list *fields_md;fields_md61,2306
+   unsigned int         max_desc_len;max_desc_len62,2342
+struct t_metafieldt_metafield65,2464
+   t_mf_type   type;type67,2485
+   uint16      size;size68,2506
+   char        *name;name69,2527
+      uint32   data;data72,2563
+      uint8    *data_ptr;data_ptr73,2584
+   } value;value74,2610
+struct t_message_tree_nodet_message_tree_node77,2706
+   t_node_type                   type;type79,2735
+      struct t_message_field_md  *field;field83,2819
+      struct t_link_data         *link;link85,2890
+      struct t_metafield         *metafield;metafield87,2965
+   struct t_message_tree_node    *next;next91,3067
+   struct t_message_tree_node    *parent;parent92,3107
+struct t_message_field_treet_message_field_tree95,3233
+   uint16                        fields_size;fields_size98,3290
+   struct t_message_tree_node    *root;root100,3337
+   struct t_message_tree_node    *cur_node;cur_node101,3377
+struct t_message_metadatat_message_metadata108,3615
+   t_message_type                message_type;message_type110,3643
+   char                          *message_descr;message_descr111,3690
+   bool                          is_compound;is_compound112,3739
+   unsigned short int            msg_out_max_dl;msg_out_max_dl115,3820
+   unsigned short                min_data_sz;min_data_sz117,3918
+   struct t_message_field_tree   *fields;fields120,4021
+
+actions.h,123
+#define _actions_h_actions_h6,206
+typedef bool (*f_action_routine)(struct t_full_msgdata   *fmd,f_action_routine16,571
+
+network.h,36
+#define _network_h_network_h6,197
+
+filters.h,2838
+#define _filters_h_filters_h6,217
+typedef enum { tios_unknown = -1, tios_stdin, tios_stdout, tios_stderr } t_ios_type;tios_unknown28,876
+typedef enum { tios_unknown = -1, tios_stdin, tios_stdout, tios_stderr } t_ios_type;tios_stdin28,876
+typedef enum { tios_unknown = -1, tios_stdin, tios_stdout, tios_stderr } t_ios_type;tios_stdout28,876
+typedef enum { tios_unknown = -1, tios_stdin, tios_stdout, tios_stderr } t_ios_type;tios_stderr28,876
+typedef enum { tios_unknown = -1, tios_stdin, tios_stdout, tios_stderr } t_ios_type;t_ios_type28,876
+typedef enum { tiop_unknown = -1, tiop_net, tiop_file, tiop_stream,tiop_unknown30,979
+typedef enum { tiop_unknown = -1, tiop_net, tiop_file, tiop_stream,tiop_net30,979
+typedef enum { tiop_unknown = -1, tiop_net, tiop_file, tiop_stream,tiop_file30,979
+typedef enum { tiop_unknown = -1, tiop_net, tiop_file, tiop_stream,tiop_stream30,979
+               tiop_none } t_iop_type;tiop_none31,1047
+               tiop_none } t_iop_type;t_iop_type31,1047
+struct t_io_pointt_io_point33,1167
+   t_iop_type type;type35,1187
+         struct sockaddr_in   m_addr;m_addr41,1243
+      } net;net43,1319
+         char *filename;filename46,1353
+      } file;file47,1378
+         t_ios_type  type;type50,1413
+      } stream;stream51,1440
+   FILE *fs;fs53,1462
+typedef enum { fat_unknown = -1, fat_none, fat_system, fat_msg, fat_write }fat_unknown57,1577
+typedef enum { fat_unknown = -1, fat_none, fat_system, fat_msg, fat_write }fat_none57,1577
+typedef enum { fat_unknown = -1, fat_none, fat_system, fat_msg, fat_write }fat_system57,1577
+typedef enum { fat_unknown = -1, fat_none, fat_system, fat_msg, fat_write }fat_msg57,1577
+typedef enum { fat_unknown = -1, fat_none, fat_system, fat_msg, fat_write }fat_write57,1577
+               t_fltaction_type;t_fltaction_type58,1653
+struct t_filter_actiont_filter_action60,1767
+   t_fltaction_type  type;type62,1792
+   char              *params;params63,1819
+struct t_filtert_filter66,1933
+   t_message_type          msg_type;msg_type68,1951
+   char                    *expr;expr69,1988
+   bool                    enabled;enabled70,2022
+   t_msg_out_fmt           out_fmt;out_fmt72,2059
+   char                    *descr;descr73,2095
+   bool                    f_only_header;f_only_header74,2130
+   struct t_common_list    *actions;actions76,2211
+   struct t_common_list    *sources;sources78,2310
+   struct t_common_list    *dests;dests79,2347
+struct t_filters_baset_filters_base82,2466
+   struct t_common_list *sources;sources84,2490
+   struct t_common_list *dests;dests85,2524
+   struct t_common_list *filters;filters87,2557
+   struct t_io_point    *def_in;def_in88,2591
+   struct t_io_point    *def_out;def_out89,2624
+   t_msg_out_fmt        def_out_fmt;def_out_fmt90,2658
+
+lexan_funcs.c,544
+long int la_abs(struct t_func_arg *fa, t_lex_ecode *e_code)la_abs12,467
+long int la_pow(struct t_func_arg *fa, t_lex_ecode *e_code)la_pow42,1032
+long int la_min(struct t_func_arg *fa, t_lex_ecode *e_code)la_min80,1739
+long int la_max(struct t_func_arg *fa, t_lex_ecode *e_code)la_max100,2238
+long int la_time(struct t_func_arg *fa, t_lex_ecode *e_code)la_time120,2737
+bool add_farg_list(struct t_func_arg **arg_list, const long int arg)add_farg_list210,4811
+void free_farg_list(struct t_func_arg **arg_list)free_farg_list236,5365
+
+crc.c,537
+#define CRC8_POLY CRC8_POLY7,304
+const uint8 crc8(char *data_p, register uint8 len)crc88,327
+static uint16 const crc16_table_lin[256] =crc16_table_lin26,789
+static inline uint16 crc16_byte(uint16 crc, unsigned char data)crc16_byte70,3265
+uint16 crc16_lin(uint16 crc, const unsigned char *buffer, unsigned int len)crc16_lin75,3475
+static uint16 const crc16_table[256] =crc16_table84,3748
+const uint16 crc16(uint8 *buf, register uint16 len)crc16120,6016
+void print_crc16_table(const uint16 vector)print_crc16_table134,6346
