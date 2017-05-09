@@ -1,0 +1,81 @@
+canonicalize-lgpl.o canonicalize-lgpl.o: canonicalize-lgpl.c \
+  ../../src/config.h stdlib.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/stdlib.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/_mingw.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/stddef.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/stdint.h \
+  alloca.h string.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/string.h \
+  unistd.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/unistd.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/io.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/sys/types.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/process.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/getopt.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/limits.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/syslimits.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/limits.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/sys/param.h \
+  sys/stat.h time.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/time.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/sys/stat.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/direct.h \
+  errno.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/errno.h \
+  pathmax.h malloca.h
+
+../../src/config.h:
+
+stdlib.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/stdlib.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/_mingw.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/stddef.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/stdint.h:
+
+alloca.h:
+
+string.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/string.h:
+
+unistd.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/unistd.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/io.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/sys/types.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/process.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/getopt.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/limits.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/syslimits.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/limits.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/sys/param.h:
+
+sys/stat.h:
+
+time.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/time.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/sys/stat.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/direct.h:
+
+errno.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/errno.h:
+
+pathmax.h:
+
+malloca.h:

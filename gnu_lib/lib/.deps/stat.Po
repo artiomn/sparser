@@ -1,0 +1,52 @@
+stat.o stat.o: stat.c ../../src/config.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/sys/types.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/_mingw.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/stddef.h sys/stat.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/sys/stat.h \
+  time.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/time.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/io.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/direct.h \
+  errno.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/errno.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/limits.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/syslimits.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/limits.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/stdbool.h string.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/string.h
+
+../../src/config.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/sys/types.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/_mingw.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/stddef.h:
+
+sys/stat.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/sys/stat.h:
+
+time.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/time.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/io.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/direct.h:
+
+errno.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/errno.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/limits.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/syslimits.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/limits.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/stdbool.h:
+
+string.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/string.h:

@@ -1,0 +1,23 @@
+memchr.o memchr.o: memchr.c ../../src/config.h string.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/string.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/_mingw.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/stddef.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/limits.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/syslimits.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/limits.h
+
+../../src/config.h:
+
+string.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/string.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/_mingw.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/stddef.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/limits.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/syslimits.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/limits.h:

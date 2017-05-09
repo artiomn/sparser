@@ -1,0 +1,8 @@
+c-ctype.o c-ctype.o: c-ctype.c ../../src/config.h c-ctype.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/stdbool.h
+
+../../src/config.h:
+
+c-ctype.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/stdbool.h:

@@ -1,0 +1,23 @@
+malloc.o malloc.o: malloc.c ../../src/config.h stdlib.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/stdlib.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/_mingw.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/stddef.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/stdint.h \
+  errno.h \
+  /usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/errno.h
+
+../../src/config.h:
+
+stdlib.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/stdlib.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/_mingw.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/stddef.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/stdint.h:
+
+errno.h:
+
+/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/../../../../i586-mingw32msvc/include/errno.h:
