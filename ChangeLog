@@ -1,0 +1,35 @@
+2012-12-10  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.am (SUBDIRS): Add po.
+	* configure.in (AC_CONFIG_FILES): Add po/Makefile.in.
+
+2012-12-10  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.am (SUBDIRS): Add po.
+	* configure.in (AC_CONFIG_FILES): Add po/Makefile.in.
+
+2012-12-10  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.am (SUBDIRS): Add intl, po.
+	* configure.in (AC_CONFIG_FILES): Add intl/Makefile, po/Makefile.in.
+	(AM_GNU_GETTEXT_VERSION): Bump to 0.18.1.
+
+2012-11-26  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.am (SUBDIRS): Add intl.
+	* configure.in (AC_CONFIG_FILES): Add intl/Makefile.
+
+2012-11-20  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.am (SUBDIRS): Add intl, po.
+	(EXTRA_DIST): Add m4/ChangeLog.
+	* configure.in (AC_CONFIG_FILES): Add intl/Makefile, po/Makefile.in.
+
+2012-11-20  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.am (SUBDIRS): Add intl.
+	(EXTRA_DIST): Add m4/ChangeLog.
+	* configure.in (AC_CONFIG_FILES): Add intl/Makefile, po/Makefile.in.
+
+v. 0.3:
+   Input and output, based on filters.
