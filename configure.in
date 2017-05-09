@@ -1,0 +1,149 @@
+AC_PREREQ([2.67])
+AC_INIT([sparser], [0.4], [artiomsoft@yandex.ru])
+AC_CONFIG_SRCDIR([src/sparser.c])
+AC_CONFIG_HEADER([src/config.h])
+
+dnl Additional options
+
+#AC_CACHE_SAVE()
+
+AC_MSG_CHECKING([debug level setting])
+AC_ARG_ENABLE([debug],
+[  --enable-debug=LEVEL    set debug level (0 - no debug: max. optimizations, 3 and more - max.)],
+[ if test -z "$enableval" || test "$enableval" = "no"; then 
+      enable_debug=0
+   elif test "$enableval" = "yes"; then
+      enable_debug=1
+   elif echo "$enableval"|grep -E ['^[[:digit:]]+$']; then
+      :
+   else
+      AC_MSG_ERROR([Incorrect debug level value "$enableval"!])
+      exit 1
+   fi
+],
+[
+   AC_MSG_RESULT([Debugging is off])
+])
+
+: ${enable_debug=0}
+
+dnl End of additional options
+
+if test "$enable_debug" -gt "0"; then
+   CFLAGS="-g -O0 $CFLAGS"
+   AC_MSG_RESULT([Debug level = $enable_debug])
+   AC_DEFINE_UNQUOTED([DEBUG_LEVEL], $enable_debug, [Debug level])
+else
+   AC_MSG_RESULT([No debug])
+   AC_DEFINE([DEBUG_LEVEL], 0, [Debug level])
+   AC_DEFINE([NDEBUG], 1, [Disable assert()])
+   CFLAGS="-s -O2 $CFLAGS"
+fi
+
+#AC_CACHE_SAVE()
+
+AC_CANONICAL_TARGET
+
+if echo "$host_os" | grep -q mingw; then
+   target_is_windows="yes"
+   AC_DEFINE([WIN32], 1, [Windows])
+else
+   target_is_windows="no"
+fi
+
+# Checks for programs.
+##AC_PROG_CXX
+AC_PROG_AWK
+AC_PROG_CC
+
+## For libintl.
+AC_PROG_YACC
+
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+AC_PROG_MKDIR_P
+AC_PROG_RANLIB
+##AC_LIBTOOL_DLOPEN
+##AC_PROG_LIBTOOL
+
+#
+# GNULIB macros.
+#
+
+# Need to call on all platforms for the correct building.
+
+gl_EARLY
+gl_INIT
+
+#gnulib_dir="$PWD/gnu_lib"
+
+# Checks for libraries.
+#AC_CHECK_LIB([ws2_32], [WSAStartup WSACleanup])
+#AC_CHECK_LIB([wsock32], [])
+AC_CHECK_LIB([m], [pow])
+AC_CHECK_LIB([intl], [gettext])
+
+# Checks for header files.
+AC_CHECK_HEADERS([OS.h argz.h arpa/inet.h fcntl.h float.h inttypes.h langinfo.h libintl.h limits.h locale.h gettext.h malloc.h netinet/in.h stddef.h stdint.h stdio_ext.h stdlib.h string.h strings.h sys/param.h sys/socket.h sys/time.h unistd.h wchar.h])
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_HEADER_STDBOOL
+AC_TYPE_UID_T
+AC_C_CONST
+AC_C_INLINE
+AC_TYPE_INT32_T
+AC_TYPE_INT64_T
+AC_TYPE_MODE_T
+AC_TYPE_OFF_T
+AC_C_RESTRICT
+AC_TYPE_SIZE_T
+AC_TYPE_SSIZE_T
+AC_TYPE_UINT16_T
+AC_TYPE_UINT32_T
+AC_TYPE_UINT8_T
+AC_CHECK_TYPES([ptrdiff_t bool])
+
+# Checks for library functions.
+AC_FUNC_MALLOC
+AC_FUNC_MBRTOWC
+AC_FUNC_MEMCMP
+AC_FUNC_MKTIME
+AC_FUNC_STRNLEN
+AC_FUNC_ALLOCA
+AC_FUNC_LSTAT_FOLLOWS_SLASHED_SYMLINK 
+
+#AC_FUNC_REALLOC
+
+AC_CHECK_FUNCS([__argz_count __argz_next __argz_stringify min max memzero memchr memset memmove system getpagesize localtime_r pow socket strchr strdup strerror strnlen strndup strstr strtol])
+AC_CHECK_FUNCS([_open_osfhandle _get_osfhandle _fdopen])
+AC_CHECK_FUNCS([atexit getcwd strcasecmp strncasecmp localeconv setlocale gettext _ ngettext nl_langinfo pathconf realpath tzset])
+## intl
+##AC_CHECK_FUNCS([mblen mbrlen strcspn])
+
+dnl if test -n "$WIN32"; then
+dnl Add GNU LIB to depends.
+dnl   LIBS="$LIBS $(top_builddir)/gnu_lib/lib/libgnu.a"
+dnl fi
+
+# AUTOMAKE INITIALIZATION #
+
+AM_INIT_AUTOMAKE
+
+AM_NLS
+AM_GNU_GETTEXT_VERSION([0.18.1])
+
+AM_CONDITIONAL(DEBUG_LEVEL, [test "$enable_debug" -gt "0"])
+AM_GNU_GETTEXT
+
+if test "$target_is_windows" = "yes"; then
+#   LIBS="$LIBS -lwsock32 -lws2_32"
+#   AM_CPPFLAGS=-I$(top_builddir)/gnu_lib/lib -I$(top_srcdir)/gnu_lib/lib
+   AC_MSG_RESULT([complete])
+   AM_CONDITIONAL(WIN32, [true])
+else
+   AM_CONDITIONAL(WIN32, [false])
+#   AM_GNU_GETTEXT([external])
+fi
+
+AC_CONFIG_FILES([Makefile gnu_lib/lib/Makefile src/Makefile docs/Makefile po/Makefile.in po/Makefile intl/Makefile m4/Makefile])
+AC_OUTPUT
