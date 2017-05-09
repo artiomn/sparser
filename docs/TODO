@@ -1,0 +1,15 @@
+0.   Make cl_insert and cl_remove.
+1.    Error type and errors description for each unit. Create structure eith msg and pmd. create structure with expr, skip and msg-pmd for lexan.
+2.    Rewrite msgparser.c/get_parsed_message() and msgparser.c/parse_message().
+3.    Optimize t_common_list.
+4.    Correct actions.c.
+5.    Add response descr for the remainder.
+6.    Replace plural forms.
+7.   replace get_num.
+8.    Add [default] section to filters.ini.
+9.    Profiling.
+10.    -lm - duplicated.
+11.    add expression result in action params.
+12.   Add tests.
+
+for i in *; do mv "$i" "$i".utf && iconv -tcp866 "$i.utf" > $i && rm "$i.utf"; done

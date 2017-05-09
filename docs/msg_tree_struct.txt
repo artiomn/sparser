@@ -1,0 +1,33 @@
+Message tree structure
+
+Message tree consists of lists of nodes.
+Every node has type: link, field or metafield.
+All nodes has parent. On level 0 node->parent == NULL.
+All nodes has brother. If it's last node in the list, node->next == NULL.
+
+Linked list, generated from message, includes only fields.
+Fields has metadata and pointer to data from real message.
+Metafields change metadata structure or user can define metafields,
+which hasn't special meaning.
+
+Link - is a tree control node.
+Link can has children list (if link hasn't childrens link->child == NULL).
+In the link @endif, children always equal to NULL.
+
+Tree example.
+
+a     - field or metafield node.
+[d]   - link node.
+->    - next.
+|     - parent above node or child below link node.
+
+
+a->b->[c (@if expr)]->[d (@elif expr/@else)]->[e (@endif)]->h->NULL
+          |  |  |            |
+          |  |  |            +---------------+-------------+---------------+------------+
+          |  |  |            |               |             |               |            |
+          f->k->j->NULL     [g (@if expr)]->[n (@endif)]->[o (@if expr)]->[p (@endif)]->r->NULL
+                                 |                         |
+                                 |                         |
+                                 |                         |
+                                 m->NULL                   q->s->NULL

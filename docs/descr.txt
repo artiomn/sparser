@@ -1,0 +1,149 @@
+PROGRAM DESCRIPTION
+===============================================================================
+
+Program workflow
+
+Input sources ---> Input -----> Parsing -----> Output -----> Interface
+         (raw data) (t_message_raw)   (t_message +
+                                       response metadata +
+                                       source +
+                                       destination
+                                       filters and
+                                       separators)
+
+
+Filter      - is a expression, which cuts off acceptable message.
+Separator   - is a expression, which directs acceptable message to selected
+destination.
+Destination - is a file descriptor.
+Source      - ?.
+
+Filter consists of:
+   Condition block:
+      1. Acceptable message types.
+      2. Fields content expression.
+   Execution block:
+      1. Sources, which is used for message recieving.
+      2. Destination, which used for message sending.
+      3. Message representation form.
+
+Message structure:
+   1. Raw message.
+   2. Message metadata.
+   3. Data pointer in raw message.
+   4. Fields list.
+
+   struct t_message
+   {
+      struct t_message_metadata     *mmd;
+      struct t_message_raw          *raw_message;
+      unsigned char                 *pointer;
+      struct t_message_fields_list  *fields;
+   };
+
+Raw message:
+   1. TRAKT message header:
+      typedef uint16 t_message_type;
+      #pragma pack(1)
+      struct t_message_header
+      {
+         uint16            message_length;
+         t_message_type    type;
+         uint16            reciever;
+         uint16            sender;
+         time32            time;
+         uint8             id;
+         uint8             reserved;
+      };
+   2. Data pointer.
+   3. CRC.
+   struct t_message_raw
+   {
+      struct t_message_header *header;
+      uint8                   *data;
+      uint16                  crc;
+   };
+
+Message metadata
+
+It is read from structured INI file (messages.ini by default).
+It's include:
+   1. Message type.
+   2. Printable descriptions for this message type and for data
+      remainder after message parsing (pointer != data_end).
+   3. Compound flag. Now only message with code 0x0475 has this flag.
+   4. Fields tree.
+
+   struct t_message_metadata
+   {
+      t_message_type                message_type;
+      char                          *message_descr;
+      char                          *remainder_descr;
+      bool                          is_compound;
+
+      // Maximum description length.
+      unsigned short int            msg_out_max_dl;
+      bool                          out_only_headers;
+      // Summary size of fixed-size message fields.
+      unsigned short                min_data_sz;
+
+      // Fields list for the current message of this type.
+      struct t_message_field_tree   *fields;
+   };
+
+Message intepreters usually doesn't work with message tree and works only
+with flat linked list of messages.
+
+// Message field metadata.
+struct t_message_field_md
+{
+   float                size;
+   char                 out_spec;
+   // Repeating field in the end of message.
+   bool                 is_repeat;
+   char                 *name;
+   char                 *descr;
+};
+
+struct t_message_fli
+{
+   struct t_message_field_md  *field_md;
+   uint8                      *field_data;
+   unsigned int               real_size;
+   struct t_message_fli       *next;
+};
+//------------------------------------------------------------------------------
+struct t_message_fields_list
+{
+   struct t_message_fli *first;
+   struct t_message_fli *cur;
+};
+
+//------------------------------------------------------------------------------
+__inline int message_data_len(const struct t_message_raw *msg);
+//------------------------------------------------------------------------------
+struct t_message_raw *create_raw_message();
+//------------------------------------------------------------------------------
+__inline int free_raw_message(struct t_message_raw *msg);
+//------------------------------------------------------------------------------
+// Message structures database.
+extern struct t_base *messages;
+//------------------------------------------------------------------------------
+struct t_base              *init_messages_db(const char *filename);
+int                        destroy_messages_db();
+struct t_message_metadata  *get_message_md_by_type(const t_message_type type);
+//------------------------------------------------------------------------------
+struct t_message_metadata *get_message_metadata(struct t_message_raw *msg);
+//------------------------------------------------------------------------------
+// Message parser. Create and return structure with message fields list.
+// Get message data and message metadata in msg.
+// Create message fields list in msg->fields. If msg->field is not NULL,
+// it use it without creating new list.
+// If error, return false, if ok, return true.
+// If message hasn't fields, msg->fields->first == NULL.
+bool get_parsed_message(struct t_message *msg);
+//------------------------------------------------------------------------------
+// Free message fields list, created by get_parsed_message().
+// Return true, if ok or false, if error.
+bool free_parsed_message(struct t_message_fields_list *mfl);
+

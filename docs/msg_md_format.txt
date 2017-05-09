@@ -1,0 +1,88 @@
+Messages metadata file syntax and parsing description
+
+@ - directive atrribute.
+
+@if      - condition.
+@elif    - condition in current level.
+@else    - default section.
+@endif   - end of conditional block.
+
+Conditions may included other conditions.
+
+Conditions syntax:
+@cond_word = cond_expr
+
+Expression can refer to above in current or upper level predefined field:
+   1. Content.
+   2. Field size.
+   -3. Field offset.
+
+Also expressions can refer to "meta fields": fields, defined in header or in
+the message metadata.
+
+Expressions format
+
+C-like expressions.
+
+Operations priority (from max to min):
+   0: *, /, %
+   1: +, -
+   2: << >>
+   3: >=, <=, >, <
+   4: ==, !=
+   5: &
+   6: ^
+   7: |
+   8: &&
+   9: ||
+
+EBNF:
+
+ph_expression     = [un_op] (expression | '('ph_expression')')
+expression        = number | ident | function | ph_un_op | term9
+
+term0             = ph_expression | term0 op_prio0 ph_expression
+term1             = term0 | term1 op_prio1 term0
+term2             = term1 | term2 op_prio2 term1
+term3             = term2 | term3 op_prio3 term2
+term4             = term3 | term4 op_prio4 term3
+term5             = term4 | term5 op_prio5 term4
+term6             = term5 | term6 op_prio6 term5
+term7             = term6 | term7 op_prio7 term6
+term8             = term7 | term8 op_prio8 term7
+term9             = term8 | term9 op_prio9 term8
+
+op_prio0          = '*'  | '/' | '%'
+op_prio1          = '+'  | '-'
+op_prio2          = '<<' | '>>'
+op_prio3          = '>=' | '<=' | '>' | '<'
+op_prio4          = '==' | '!='
+op_prio5          = '&'
+op_prio6          = '^'
+op_prio7          = '|'
+op_prio8          = '&&'
+op_prio9          = '||'
+
+function          = function_name '('[ ph_expression { ',' ph_expression } ]')'
+function_name     = first_sym{first_sym|0..9}
+
+un_op             = '-' | '~' | '!'
+ph_un_op          = pu_op_name'('field_name')'
+pu_op_name        = sizeof|offset
+
+ident             = field_name|meta_field
+
+field_name        = first_sym{first_sym|0..9}
+meta_field        = '$'meta_field_name
+meta_field_name   = field_name
+first_sym         = '_' | 'a..zA..Z'
+
+number            = num_hex|num_oct|num_bin|num_dec
+num_hex           = '0x'{a..fA..F0..9}
+num_dec           = '1..9'{0..9}
+num_bin           = '0b'{0|1}
+num_oct           = '0'{0..7}
+
+Predefined functions:
+   1. abs(num).
+   2. pow(base, factor).
