@@ -1,0 +1,23 @@
+AC_PREREQ(2.69)
+AC_INIT(src/sparser.c)
+AC_CONFIG_FILES([Makefile gnu_lib/lib/Makefile src/Makefile])
+AC_PROG_RANLIB
+#AC_CONFIG_HEADERS([conf.h])
+AM_INIT_AUTOMAKE(sparser, 0.2)
+
+# Checks for programs.
+AC_PROG_AWK
+AC_PROG_CC
+
+# GNULIB macros.
+gl_EARLY
+
+# Checks for libraries.
+# FIXME: Replace `main' with a function in `-lws2_32':
+#AC_CHECK_LIB([ws2_32], [main])
+# FIXME: Replace `main' with a function in `-lwsock32':
+#AC_CHECK_LIB([wsock32], [main])
+
+gl_INIT
+
+AC_OUTPUT()

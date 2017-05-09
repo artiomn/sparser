@@ -1,0 +1,42 @@
+//
+int mdi_tc_reaction(const unsigned char *data, const long data_sz)
+// 0x0502 Control reaction.
+{
+   struct t_st_tc_react *st = (struct t_st_tc_react *)data;
+
+   if (data_sz < sizeof(struct t_st_tc_react)) return(-1);
+
+   printf("Telecontrol code:\t\t0x%08X\nMessage ID:\t\t\t0x%02X\n",
+      st->tc_code, st->msg_id);
+   printf("Message time:\t\t\t%d -> %s",
+      st->msg_time,
+      (st->msg_time) ? asctime(gmtime(&st->msg_time)) : "not configured\n");
+   printf("Command status:\t\t\td%08d (%s)\n",
+      st->cmd_status,
+      (st->cmd_status >= 0) ? "command was executed" : "command was NOT executed!");
+   printf("Service code 0:\t\t\t0x%08X\n", st->_srv0);
+   printf("Service code 1:\t\t\t0x%04X\n", st->_srv1);
+   printf("Service code 2:\t\t\t0x%02X\n", st->_srv2);
+   printf("Service code 3:\n");
+//   mdi_default(st->_srv3, sizeof(st->_srv3));
+
+   return(0);
+}
+//
+int mdi_st_chan(const unsigned char *data, const long data_sz)
+// 0x0503 Channel status.
+{
+   long int i;
+
+   if (data_sz < sizeof(t_st_chan_status)) return(-1);
+
+   for (i = 0; i < data_sz; i += sizeof(t_st_chan_status))
+   {
+      printf("Channel address:\t\t0x%03X\n", ST_CHAN_ADDR(*(data + i)));
+      printf("Data transmitting status:\tb");
+      //print_bin(ST_CHAN_STATUS(*(data + i)), 4);
+      printf("\n\n");
+   }
+   return(0);
+}
+

@@ -1,0 +1,63 @@
+# Makefile for sparser
+# TRAKT messages parser.
+
+CC          = i586-mingw32msvc-gcc -c
+#CC          = gcc -c
+CFLAGS      += -g -Wall -O0
+LINK        = i586-mingw32msvc-gcc
+#LINK        = gcc
+P_NAME      = sparser
+LINKFLAGS   = -g -o sparser -static-libgcc -lwsock32 -lws2_32 
+#LINKFLAGS   = -g -o sparser
+FILES       = sparser.o msgmetadata.o lexan.o lexan_funcs.o msgloader.o msgparser.o msgviewer.o iniparser.o ini.o crc.o utils.o stations.o raw_message.o config_loader.o filters.o windows_compat/getsubopt.o
+
+all: $(P_NAME)
+
+$(P_NAME): $(FILES) tags
+	$(LINK) $(FILES) $(LINKFLAGS)
+
+sparser.o: sparser.c sparser.h common.h version
+
+windows_compat/getsubopt.o: windows_compat/getsubopt.c windows_compat/getsubopt.h
+
+config_loader.o: config_loader.c config_loader.h utils.o filters.o common.h
+
+filters.o: filters.c filters.h utils.o iniparser.o msgmetadata.o common.h
+
+msgloader.o: msgloader.c msgloader.h raw_message.o common.h
+
+lexan.o: lexan.c lexan.h msgmetadata.o lexan_funcs.o common.h
+
+lexan_funcs.o: lexan_funcs.c lexan_funcs.h common.h
+
+raw_message.o: raw_message.c raw_message.h utils.o crc.o common.h
+
+msgmetadata.o: msgmetadata.c msgmetadata.h raw_message.o crc.o utils.o common.h
+
+msgparser.o: msgparser.c msgparser.h msgmetadata.o msgviewer.o raw_message.o common.h
+
+msgviewer.o: msgviewer.c msgviewer.h raw_message.o msgmetadata.o utils.o common.h
+
+stations.o: stations.h stations.c common.h
+
+iniparser.o: iniparser.c iniparser.h common.h
+
+ini.o: ini.c ini.h common.h
+
+utils.o: utils.c utils.h common.h
+
+crc.o: crc.c crc.h common.h
+
+common.h: errors.h conf.h
+	touch common.h
+
+version:
+	sed "s/\(BUILD_DATE\W\)\(".*"\)/\1\"`date '+%d.%m.%y %T'`\"/" sparser.h >.sparser.h
+	mv -f .sparser.h sparser.h
+
+tags: *.c *.h
+	ctags *.c *.h
+
+clean:
+	rm -f *~ core *.o $(P_NAME)
+

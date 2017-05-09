@@ -1,0 +1,204 @@
+;
+; 'TRAKT' dispatcher centralisation message description.
+;
+
+; Compound messgae:
+
+; Message structure name.
+[t_compound]
+; Message type in hex with preceding "0x" or in decimal form.
+$msg_type          = 0x0475
+; Message description.
+$msg_descr         = compound message
+; Compound message flag (0 or 1).
+$is_compound       = 1
+; Compound message hasn't fields.
+
+; Simple message without fields.
+[t_st_ts_cur]
+
+$msg_type         = 0x0501
+$msg_descr        = current telesignalisation
+$is_compound      = 0
+; Message for description remainder of message.
+$remainder_descr  = Telesignalisation table
+
+
+; Simple message: 
+; Message structure name.
+[t_st_tc_react]
+
+; Message type in hex with preceding "0x" or in decimal form.
+$msg_type         = 0x0502
+; Message description.
+$msg_descr        = control reaction
+; Compound message flag (0 or 1).
+$is_compound      = 0
+
+; Fields order is significant!
+; Message fields in format: "size in bytes"|1/"relation size","C type","output specification","Field description"
+; "output specification":
+;        'x'   - for hex,
+;        /*'o' - for octal,*/,
+;        'b'   - for bin,
+;        'd'   - for signed decimal,
+;        'u'   - unsigned decimal,
+;        't'   - time (encoded and decoded).
+_srv0             = 4,int,x,Service code 0
+tc_code           = 4,unsigned int,x,Telecontrol code (optional)
+_srv1             = 2,short int,x,Service code 1
+_srv2             = 1,unsigned char,x,Service code 2
+msg_id            = 1,unsigned char,x,Message ID (optional)
+msg_time          = 4,time_t,t,Message time (optional)
+cmd_status        = 4,int,d,Command status
+_srv3             = 12,unsigned char,x,Service code 3
+
+
+[t_st_chan]
+
+$msg_type         = 0x0503
+$msg_descr        = channel status
+$is_compound      = 0
+
+; Repeated field in the end of the message.
+channel_stat      = *2,unsigned short,b,  Address     |Transmitting status
+
+[t_st_cstatus]
+
+$msg_type                  = 0x0504
+$msg_descr                 = configuration and status message
+$is_compound               = 0
+
+length                     = 1,unsigned char,u,Status description length
+type                       = 1,unsigned char,x,Type
+modules_worked             = 1,unsigned char,b,Modules working status
+modules_exchange_mask      = 1,unsigned char,b,Modules exchanging mask
+modules_exch_mask_can_a    = 1,unsigned char,b,Modules exchanging mask throw CAN A
+modules_exch_mask_can_b    = 1,unsigned char,b,Modules exchanging mask throw CAN B
+
+; Modules state data.
+uso_out_jun_master_worked  = 1,unsigned char,x,USO OUT junior master working status
+uso_out_jun_slave_worked   = 1,unsigned char,x,USO OUT junior slave working status
+uso_out_sen_master_worked  = 1,unsigned char,x,USO OUT senior master working status
+uso_out_sen_slave_worked   = 1,unsigned char,x,USO OUT senior slave working status
+; Non fixed-width  fields.
+uso_in_master_worked       = 1/2,none,x,USO IN master working status
+; Slave or master determined by bits in modules_worked.
+uso_in_slave_worked        = 1/2,none,x,USO IN slave working status
+
+[ts_tc]
+
+$msg_type         = 0x0505
+$msg_descr        = control message
+$is_compound      = 0
+;$remainder_descr  = Telecontrol table
+
+data              = 16,char*,x,Data
+_srv0             = 4,unsigned int,x,Service field 0
+tc_code           = 4,unsigned int,x,Telecontrol code
+_srv1             = 4,unsigned int,x,Service field 1
+_srv2             = 4,unsigned int,x,Service field 2
+
+
+[t_st_tech]
+
+$msg_type         = 0x0506
+$msg_descr        = technology command (configuration mode change request)
+$is_compound      = 0
+
+
+[t_st_install]
+
+$msg_type         = 0x0507
+$msg_descr        = install command
+$is_compound      = 0
+
+
+[t_st_sh_test]
+
+$msg_type         = 0x0508
+$msg_descr        = gateway machines test information
+$is_compound      = 0
+
+
+[t_st_sh_control]
+
+$msg_type         = 0x0509
+$msg_descr        = gateway machines control command
+$is_compound      = 0
+
+
+[t_st_flash]
+
+$msg_type         = 0x0511
+$msg_descr        = flashing
+$is_compound      = 0
+$remainder_descr  = Flashing table
+
+[t_st_ts_adv]
+
+$msg_type         = 0x0512
+$msg_descr        = advanced telesignalisation
+$is_compound      = 0
+$remainder_descr  = Telesignalisation table
+
+
+[t_st_chan_d]
+
+$msg_type         = 0x0513
+$msg_descr        = digital channel status
+$is_compound      = 0
+
+node_netaddr_jun  = 1,unsigned char,x,Node network address, read-accesible for junior CC
+node_netaddr_sen  = 1,unsigned char,x,Node network address, read-accesible for senior CC
+_srv0             = 1,unsigned char,x,Service code
+_srv1             = 1,unsigned char,x,Service code
+sel_state_jun     = 1,unsigned char,b,Selector state code (junior channel)
+sel_state_sen     = 1,unsigned char,b,Selector state code (senior channel)
+_srv2             = 2,short int,x,Service code
+_srv3             = 4,int,x,Service code
+_reserved         = 8,long long,x,Reserved
+
+
+[t_st_chan_a]
+
+$msg_type         = 0x0514
+$msg_descr        = analog channel status
+$is_compound      = 0
+$remainder_descr  = Analog channels data
+
+length            = 2,unsigned short,d,Data length
+type              = 1,unsigned char,x,Packet type
+
+
+[t_st_0x523]
+
+$msg_type         = 0x0523
+$msg_descr        = ? software version ?
+$is_compound      = 0
+
+[t_st_0x473]
+
+$msg_type         = 0x0473
+$msg_descr        = ? Unknown from port 7004
+$is_compound      = 0
+
+[t_st_0x4f6]
+
+$msg_type         = 0x04F6
+$msg_descr        = ? Unknown from udp.mddhh file from program "MIX"
+$is_compound      = 0
+; TRASH
+
+; Specification for the human readable output. NOT REALIZED.
+; Format {printf|hex}:spec
+; "printf specification","printf data".
+; "printf data" - set of comma separated parameters, where parameter is a field name or
+; a field description name: %"field name"
+;$out_spec          = printf:"%s:\t\t0x%02X%s\n%s:\t\t0x%02X\n%s:\t\t\t\t0x%02X\n%s:\t\t\t\t0x%02X\n%s:\t0x%02X\n%s:\t0x%02X\n%s:\t\t\t\t0x%04X\n%s:\t\t\t\t0x%08X\n%s:\t\t\t\t0x%016X\n",
+;   %node_netaddr_jun,node_netaddr_jun,%node_netaddr_sen,node_netaddr_sen,%_srv0,_srv0,%_srv1,srv1,%sel_state_jun,sel_state_jun,%sel_state_sen,sel_state_sen,%_srv2,_srv2,%srv3,_srv3,
+;   %_reserved,_reserved
+
+; End header flag.
+; $header_end       = 1
+
