@@ -5,14 +5,14 @@ Look for documentations in 'docs' directory.
 Look for sources and ready binary in 'src'.
 
 
-Building
---------
+Build
+-----
 
-1. For Linux:     ./configure && make .
-2. For Windows:   ./build_winexe.sh .
+1. For Linux:     `./configure && make` .
+2. For Windows:   `./build_winexe.sh` .
 
 configure options:
---enable-debug=LEVEL - set debug level to LEVEL.
+- `--enable-debug=LEVEL` - set debug level to LEVEL.
 
 Tested with gcc-4.4..4.7 and mingw-4.2.1.
 
