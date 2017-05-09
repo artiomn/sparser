@@ -1,0 +1,775 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Artiom N.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: sparser 0.4\n"
+"Report-Msgid-Bugs-To: artiomsoft@yandex.ru\n"
+"POT-Creation-Date: 2012-12-10 11:55+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/config_loader.c:23
+#, c-format
+msgid "Warning: \"%s\" is duplicated (used first value)!\n"
+msgstr ""
+
+#: src/config_loader.c:81
+#, c-format
+msgid "Warning: unknown output format '%s' (default format will be used).\n"
+msgstr ""
+
+#: src/config_loader.c:88
+#, c-format
+msgid "Error: unknown configuration parameter \"%s\"!\n"
+msgstr ""
+
+#: src/filters.c:102
+#, c-format
+msgid "Error: unknown stream type!\n"
+msgstr ""
+
+#: src/filters.c:220
+#, c-format
+msgid "Error: default filename is not specified!\n"
+msgstr ""
+
+#: src/filters.c:227
+#, c-format
+msgid "Error: filename is not specified!\n"
+msgstr ""
+
+#: src/filters.c:241
+#, c-format
+msgid "Error: can't open file \"%s\"!\n"
+msgstr ""
+
+#: src/filters.c:269
+#, c-format
+msgid "Error: address is not defined!\n"
+msgstr ""
+
+#: src/filters.c:281 src/filters.c:291 src/filters.c:304
+#, c-format
+msgid "Error: port is not specified!\n"
+msgstr ""
+
+#: src/filters.c:317
+#, c-format
+msgid "Error: address conversion error!\n"
+msgstr ""
+
+#: src/filters.c:325
+#, c-format
+msgid "Error: default address is not defined!\n"
+msgstr ""
+
+#: src/filters.c:385
+#, c-format
+msgid "Error: unknown %s specification in \"%s\"!\n"
+msgstr ""
+
+#: src/filters.c:410 src/filters.c:428
+#, c-format
+msgid "Error: trailing characters after point specification \"%s\"!\n"
+msgstr ""
+
+#: src/filters.c:416
+#, c-format
+msgid "Error: not allowed input source!\n"
+msgstr ""
+
+#: src/filters.c:421
+#, c-format
+msgid "Error: STDIN is an incorrect destination!\n"
+msgstr ""
+
+#: src/filters.c:489
+#, c-format
+msgid "Error: unknown action type in \"%s\"!\n"
+msgstr ""
+
+#: src/filters.c:501
+#, c-format
+msgid "Error: incorrect action specification \"%s\"!\n"
+msgstr ""
+
+#: src/filters.c:508
+#, c-format
+msgid "Error: action needs parameter [%s]!\n"
+msgstr ""
+
+#: src/filters.c:519
+#, c-format
+msgid "Error: trailing characters after action specification \"%s\"!\n"
+msgstr ""
+
+#: src/filters.c:577
+#, c-format
+msgid "Error: pick filter from base!\n"
+msgstr ""
+
+#: src/filters.c:602
+#, c-format
+msgid "Error: can't create actions list!\n"
+msgstr ""
+
+#: src/filters.c:630
+#, c-format
+msgid "Can't create destinations list!\n"
+msgstr ""
+
+#: src/filters.c:640
+#, c-format
+msgid "Error: unknown output format \"%s\"!\n"
+msgstr ""
+
+#: src/filters.c:654
+#, c-format
+msgid "Error: unknown filter parameter \"%s\"!\n"
+msgstr ""
+
+#: src/iniparser.c:165
+#, c-format
+msgid "Can't load ini file: "
+msgstr ""
+
+#: src/iniparser.c:167
+#, c-format
+msgid "[error in line: %d]!\n"
+msgstr ""
+
+#: src/lexan.c:1027
+msgid "no error"
+msgstr ""
+
+#: src/lexan.c:1030
+msgid "unexpected end of line"
+msgstr ""
+
+#: src/lexan.c:1033
+msgid "general error"
+msgstr ""
+
+#: src/lexan.c:1036
+msgid "unknown lexeme"
+msgstr ""
+
+#: src/lexan.c:1039
+msgid "unknown operation"
+msgstr ""
+
+#: src/lexan.c:1042
+msgid "unexpected bracket"
+msgstr ""
+
+#: src/lexan.c:1045
+msgid "no opening bracket"
+msgstr ""
+
+#: src/lexan.c:1048
+msgid "no trailing bracket"
+msgstr ""
+
+#: src/lexan.c:1051
+msgid "operator argument is not a field"
+msgstr ""
+
+#: src/lexan.c:1054
+msgid "function code is not defined"
+msgstr ""
+
+#: src/lexan.c:1057
+msgid "function internal error"
+msgstr ""
+
+#: src/lexan.c:1060
+msgid "function argument adding error"
+msgstr ""
+
+#: src/lexan.c:1063
+msgid "function needs more arguments"
+msgstr ""
+
+#: src/lexan.c:1066
+msgid "function needs less arguments"
+msgstr ""
+
+#: src/lexan.c:1069
+msgid "need comma between arguments"
+msgstr ""
+
+#: src/lexan.c:1072
+msgid "characters after the end of expr"
+msgstr ""
+
+#: src/lexan.c:1075
+msgid "field was not found"
+msgstr ""
+
+#: src/lexan.c:1078
+msgid "end of parser error codes list [stub]"
+msgstr ""
+
+#: src/lexan.c:1081
+msgid "unknown error"
+msgstr ""
+
+#: src/lexan.c:1093
+#, c-format
+msgid "Error: %s\n"
+msgstr ""
+
+#: src/msgloader.c:30
+#, c-format
+msgid "Error: message length reading error [%s]!\n"
+msgstr ""
+
+#: src/msgloader.c:39 src/msgloader.c:90
+#, c-format
+msgid "Error: memory allocation for the message buffer error [%s]!\n"
+msgstr ""
+
+#: src/msgloader.c:52
+#, c-format
+msgid "Error: message reading error [%s]!\n"
+msgstr ""
+
+#: src/msgloader.c:83
+#, c-format
+msgid "Error: message length recieving error [%s]!\n"
+msgstr ""
+
+#: src/msgloader.c:101
+#, c-format
+msgid "Error: packet recieving error [%s]!\n"
+msgstr ""
+
+#: src/msgmetadata.c:294
+#, c-format
+msgid ""
+"Error: memory allocation for the message metafield (message type 0x%04X)!\n"
+msgstr ""
+
+#: src/msgmetadata.c:311
+#, c-format
+msgid "Error: memory allocation for the message link (message type 0x%04X)!\n"
+msgstr ""
+
+#: src/msgmetadata.c:341
+#, c-format
+msgid "Error: unknown control keyword \"%s\" in message type 0x%04X!\n"
+msgstr ""
+
+#: src/msgmetadata.c:350
+#, c-format
+msgid "Error: can't add node \"%s\" [value = \"%s\", message type 0x%04X]!\n"
+msgstr ""
+
+#: src/msgmetadata.c:362
+#, c-format
+msgid "Error: memory allocation for the message field (message type 0x%04X)!\n"
+msgstr ""
+
+#: src/msgmetadata.c:374
+#, c-format
+msgid "Error: parsing size of field \"%s\" (message type 0x%04X)!\n"
+msgstr ""
+
+#: src/msgmetadata.c:407
+#, c-format
+msgid ""
+"Error: parsing output specification of field \"%s\" (message type 0x%04X)!\n"
+msgstr ""
+
+#: src/msgmetadata.c:419
+#, c-format
+msgid "Error: incorrect identifier name \"%s\" in message type 0x%04X\n"
+msgstr ""
+
+#: src/msgmetadata.c:479
+#, c-format
+msgid "Error: parsing output specification of header field \"%s\"!\n"
+msgstr ""
+
+#: src/msgparser.c:87
+#, c-format
+msgid "Error: no field name in response \"%s\"!\n"
+msgstr ""
+
+#: src/msgparser.c:99
+#, c-format
+msgid "Error: can't find field with name \"%s\"!\n"
+msgstr ""
+
+#: src/msgparser.c:108
+#, c-format
+msgid "Error: can't find condition expr in response \"%s\"!\n"
+msgstr ""
+
+#: src/msgparser.c:134
+#, c-format
+msgid "Error: can't find error level in the response \"%s\"!\n"
+msgstr ""
+
+#: src/msgparser.c:332
+#, c-format
+msgid "Error: @elif without preceding @if [type 0x%04X]!\n"
+msgstr ""
+
+#: src/msgparser.c:372
+#, c-format
+msgid "Error: @else without preceding @if or @elif [type 0x%04X]!\n"
+msgstr ""
+
+#: src/msgparser.c:394
+#, c-format
+msgid "Error: @end without preceding condition [type 0x%04X]!\n"
+msgstr ""
+
+#: src/msgparser.c:439
+#, c-format
+msgid "Error: link type \"%d\" is not defined [message type 0x%04X]!\n"
+msgstr ""
+
+#: src/msgparser.c:524
+#, c-format
+msgid "Error: unknown node type [%d] on level %d\n"
+msgstr ""
+
+#: src/msgparser.c:537
+#, c-format
+msgid "Error: need @end (message type = 0x%04X)!\n"
+msgstr ""
+
+#: src/msgparser.c:676 src/msgparser.c:677
+msgid "unknown message"
+msgstr ""
+
+#: src/msgparser.c:1011
+#, c-format
+msgid "Error: inner message length greater, than compound message length!\n"
+msgstr ""
+
+#: src/msgparser.c:1074
+#, c-format
+msgid "Error: unknown IO point type (%d)!\n"
+msgstr ""
+
+#: src/msgviewer.c:70
+#, c-format
+msgid " ("
+msgstr ""
+
+#: src/msgviewer.c:74
+#, c-format
+msgid "%s [err = %d]"
+msgstr ""
+
+#: src/msgviewer.c:76
+#, c-format
+msgid "%s"
+msgstr ""
+
+#: src/msgviewer.c:80
+#, c-format
+msgid ")"
+msgstr ""
+
+#: src/msgviewer.c:99
+#, c-format
+msgid "%s (%d bytes):\n"
+msgstr ""
+
+#: src/msgviewer.c:101
+msgid "Remainder of message data"
+msgstr ""
+
+#: src/msgviewer.c:150
+#, c-format
+msgid " [correct]"
+msgstr ""
+
+#: src/msgviewer.c:154
+#, c-format
+msgid " [Incorrect! Calculated CRC: 0x%04X]"
+msgstr ""
+
+#: src/msgviewer.c:198
+#, c-format
+msgid ""
+"%s\n"
+"COMPOUND MESSAGE\n"
+"%s\n"
+msgstr ""
+
+#: src/msgviewer.c:212
+#, c-format
+msgid ""
+"\n"
+"***** Message data *****\n"
+"\n"
+msgstr ""
+
+#: src/msgviewer.c:217
+#, c-format
+msgid ""
+"\n"
+"%s\n"
+"***** Simple messages *****\n"
+"%s\n"
+"\n"
+msgstr ""
+
+#: src/msgviewer.c:227
+#, c-format
+msgid "\n"
+msgstr ""
+
+#: src/msgviewer.c:232
+#, c-format
+msgid ""
+"Message has not data...\n"
+"%s\n"
+msgstr ""
+
+#: src/msgviewer.c:300
+msgid "correct"
+msgstr ""
+
+#: src/msgviewer.c:300
+msgid "incorrect"
+msgstr ""
+
+#: src/msgviewer.c:341
+#, c-format
+msgid "hex data"
+msgstr ""
+
+#: src/msgviewer.c:347
+#, c-format
+msgid "Message has not data;"
+msgstr ""
+
+#: src/msgviewer.c:374
+#, c-format
+msgid "RAW: Message header writing error [%s]!\n"
+msgstr ""
+
+#: src/msgviewer.c:390
+#, c-format
+msgid "RAW: Message data writing error!\n"
+msgstr ""
+
+#: src/msgviewer.c:398
+#, c-format
+msgid "RAW: Message CRC writing error [%s]!\n"
+msgstr ""
+
+#: src/network.c:22
+#, c-format
+msgid "Error: WSAStartup %d\n"
+msgstr ""
+
+#: src/network.c:49
+#, c-format
+msgid "Error: socket creating [%s]!\n"
+msgstr ""
+
+#: src/network.c:57
+#, c-format
+msgid "Error: binding [%s]!\n"
+msgstr ""
+
+#: src/network.c:65
+#, c-format
+msgid "Error: connecting [%s]!\n"
+msgstr ""
+
+#: src/sparser.c:26
+#, c-format
+msgid "%s version: %s (build at %s)\n"
+msgstr ""
+
+#: src/sparser.c:34
+#, c-format
+msgid ""
+"\n"
+"Usage:\n"
+"%s [options]\n"
+"\n"
+msgstr ""
+
+#: src/sparser.c:36
+#, c-format
+msgid ""
+"Options:\n"
+"\n"
+msgstr ""
+
+#: src/sparser.c:37
+#, c-format
+msgid "-f<parameters> \t\t- input source specification:\n"
+msgstr ""
+
+#: src/sparser.c:38
+#, c-format
+msgid ""
+"network[,address:port]\t- read data from UDP with specified address and "
+"port.\n"
+msgstr ""
+
+#: src/sparser.c:39
+#, c-format
+msgid "file,<filename> \t- read data from file.\n"
+msgstr ""
+
+#: src/sparser.c:40
+#, c-format
+msgid "stdin \t\t\t- read data from STDIN.\n"
+msgstr ""
+
+#: src/sparser.c:41
+#, c-format
+msgid "none \t\t\t- don't read data by default.\n"
+msgstr ""
+
+#: src/sparser.c:42 src/sparser.c:49
+#, c-format
+msgid ""
+"Default: \t\t  %s\n"
+"\n"
+msgstr ""
+
+#: src/sparser.c:43
+#, c-format
+msgid "-t<parameters> \t\t- destination specification:\n"
+msgstr ""
+
+#: src/sparser.c:44
+#, c-format
+msgid ""
+"network[,address:port]\t- write data to UDP with specified address and "
+"port.\n"
+msgstr ""
+
+#: src/sparser.c:45
+#, c-format
+msgid "file,<filename> \t- write data to file.\n"
+msgstr ""
+
+#: src/sparser.c:46
+#, c-format
+msgid "stdout \t\t\t- write data to STDOUT.\n"
+msgstr ""
+
+#: src/sparser.c:47
+#, c-format
+msgid "stderr \t\t\t- write data to STDERR.\n"
+msgstr ""
+
+#: src/sparser.c:48
+#, c-format
+msgid "none \t\t\t- don't write data by default.\n"
+msgstr ""
+
+#: src/sparser.c:50
+#, c-format
+msgid ""
+"\n"
+"Other options:\n"
+msgstr ""
+
+#: src/sparser.c:51
+#, c-format
+msgid "-o<out_format>\t - default output format (default: %s).\n"
+msgstr ""
+
+#: src/sparser.c:52
+#, c-format
+msgid "-m<messages> \t - messages metadata file (default: \"%s\").\n"
+msgstr ""
+
+#: src/sparser.c:54
+#, c-format
+msgid "-r<header> \t - header metadata file (default: \"%s\").\n"
+msgstr ""
+
+#: src/sparser.c:56
+#, c-format
+msgid "-s<stations> \t - stations database file (default: \"%s\").\n"
+msgstr ""
+
+#: src/sparser.c:58
+#, c-format
+msgid "-c<config_file>\t - configuration file (default: \"%s\").\n"
+msgstr ""
+
+#: src/sparser.c:60
+#, c-format
+msgid "-l<filters> \t - filters file (default \"%s\").\n"
+msgstr ""
+
+#: src/sparser.c:62
+#, c-format
+msgid ""
+"-h \t\t - print this help.\n"
+"\n"
+msgstr ""
+
+#: src/sparser.c:63
+#, c-format
+msgid ""
+"-v \t\t - print version.\n"
+"\n"
+msgstr ""
+
+#: src/sparser.c:70
+#, c-format
+msgid ""
+"%s\n"
+"Exiting...\n"
+msgstr ""
+
+#: src/sparser.c:94
+#, c-format
+msgid "Network initialization...\n"
+msgstr ""
+
+#: src/sparser.c:97
+#, c-format
+msgid "Error: network initialization failed!\n"
+msgstr ""
+
+#: src/sparser.c:101 src/sparser.c:272
+#, c-format
+msgid "Success.\n"
+msgstr ""
+
+#: src/sparser.c:139
+#, c-format
+msgid "Error: can't register on exit function [%s]!\n"
+msgstr ""
+
+#: src/sparser.c:222
+#, c-format
+msgid "Initializing...\n"
+msgstr ""
+
+#: src/sparser.c:225
+#, c-format
+msgid "Setting timezone to \"%s\"...\n"
+msgstr ""
+
+#: src/sparser.c:228
+#, c-format
+msgid "Warning: timezone setting failed! Time may be incorrect!\n"
+msgstr ""
+
+#: src/sparser.c:243
+#, c-format
+msgid "Error: can't load config \"%s\"!\n"
+msgstr ""
+
+#: src/sparser.c:249
+#, c-format
+msgid "Loading messages data from \"%s\"...\n"
+msgstr ""
+
+#: src/sparser.c:253
+#, c-format
+msgid "Error: can't loading messages data!\n"
+msgstr ""
+
+#: src/sparser.c:257
+#, c-format
+msgid "Success: found %d message types.\n"
+msgstr ""
+
+#: src/sparser.c:261
+#, c-format
+msgid "Loading stations data from \"%s\"...\n"
+msgstr ""
+
+#: src/sparser.c:263
+#, c-format
+msgid "Warning: can't load stations data!\n"
+msgstr ""
+
+#: src/sparser.c:264
+#, c-format
+msgid "Success: found %d stations.\n"
+msgstr ""
+
+#: src/sparser.c:266
+#, c-format
+msgid "Loading header metadata from \"%s\"...\n"
+msgstr ""
+
+#: src/sparser.c:269
+#, c-format
+msgid "Error: can't load header fields metadata!\n"
+msgstr ""
+
+#: src/sparser.c:276
+#, c-format
+msgid "Loading filters from \"%s\"...\n"
+msgstr ""
+
+#: src/sparser.c:281
+#, c-format
+msgid "Error: can't load filters!\n"
+msgstr ""
+
+#: src/sparser.c:284
+#, c-format
+msgid "Success: found %d filters\n"
+msgstr ""
+
+#: src/sparser.c:293
+#, c-format
+msgid ""
+"Decoding started...\n"
+"\n"
+msgstr ""
+
+#: src/sparser.c:298
+#, c-format
+msgid "Error: message processing error!\n"
+msgstr ""
+
+#: src/stations.c:27
+#, c-format
+msgid "Error: station adresses limit exceeds [staion: %s, max: %d]!\n"
+msgstr ""
+
+#: src/stations.c:37
+#, c-format
+msgid "Warning: station name will be replaced [%s -> %s]!\n"
+msgstr ""
+
+#: src/stations.c:45
+#, c-format
+msgid "Error: unknown station description field [%s]!\n"
+msgstr ""
+
+#: src/stations.c:142
+msgid "unknown"
+msgstr ""
+
+#: src/utils.c:327 src/utils.c:332
+msgid "not configured"
+msgstr ""
+
+#: src/utils.c:342 src/utils.c:421
+#, c-format
+msgid "Error: unknown output format specifier: '%c'\n"
+msgstr ""

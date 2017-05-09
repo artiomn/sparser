@@ -1,0 +1,5 @@
+<KrossScripting>
+  <collection comment="Сервис" name="tools" text="Сервис">
+    <script icon="text-x-python" comment="Щелчок средней мыши на виджете в любом приложении KDE инициализирует поиск памяти переводов во всех открытых окнах Lokalize" name="widget-text-capture" file="widget-text-capture.py" interpreter="python" text="Захват текста из интерфейса программ"/>
+  </collection>
+</KrossScripting>
